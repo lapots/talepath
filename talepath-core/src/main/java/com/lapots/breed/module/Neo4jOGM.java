@@ -19,13 +19,6 @@ public class Neo4jOGM implements Module {
             .uri(conf.getString("db.url"))
             .credentials(conf.getString("db.user"), conf.getString("db.password"));
         var sessionFactory = new SessionFactory(config.build(), "com.lapots.breed.domain");
-
-        initListeners(sessionFactory);
-
         binder.bind(SessionFactory.class).toInstance(sessionFactory);
-    }
-
-    private void initListeners(SessionFactory sessionFactory) {
-        sessionFactory.register(new AddCharacterIdListener());
     }
 }
