@@ -1,0 +1,24 @@
+
+plugins {
+    id 'application'
+    id 'jooby' version '1.5.1'
+}
+
+application {
+    mainClassName = 'com.lapots.breed.Main'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jooby:jooby-netty:$joobyVersion"
+    compile "org.jooby:jooby-jackson:$joobyVersion"
+
+    compile "org.neo4j:neo4j-ogm-core:$neo4jOGMVersion"
+    compile "org.neo4j:neo4j-ogm-bolt-driver:$neo4jOGMVersion"
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    runtime "org.codehaus.groovy:groovy:$groovyVersion"
+}
