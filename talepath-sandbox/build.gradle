@@ -13,4 +13,5 @@ repositories {
 
 dependencies {
     compileOnly "org.projectlombok:lombok:$lombokVersion"
+    compile "de.danielbechler:java-object-diff:0.95"
 }
