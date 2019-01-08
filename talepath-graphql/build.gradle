@@ -13,4 +13,5 @@ repositories {
 
 dependencies {
     compileOnly "org.projectlombok:lombok:$lombokVersion"
+    compile "com.graphql-java:graphql-java:$javaGraphqlVersion"
 }

@@ -1,0 +1,24 @@
+type Query {
+    single(id: ID!): Character
+}
+
+type Character {
+    id: ID!
+    name: String
+    acquaintances: [Character]
+    labels: [String]
+}
+
+/*
+    {
+        single(id: 12345) {
+            id
+            name
+            acquaintances {
+                id
+                name
+            }
+            labels
+        }
+    }
+*/
