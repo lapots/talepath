@@ -1,0 +1,4 @@
+rootProject.name = 'talepath-poc-1'
+
+include 'talepath-poc-1-backend'
+include 'talepath-poc-1-ui'

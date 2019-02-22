@@ -1,0 +1,14 @@
+group = 'com.lapots.breed'
+
+allprojects {
+    group = 'com.lapots.breed'
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    version = '1.0-SNAPSHOT'
+    repositories {
+        jcenter()
+    }
+}

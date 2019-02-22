@@ -5,9 +5,9 @@
 *.ipr
 
 .gradle
-/build/
 !gradle/wrapper/gradle-wrapper.jar
 out/
+build
 
 # Maven
 log/
