@@ -1,0 +1,30 @@
+sourceSets {
+    integrationTest {
+        java.srcDir 'src/testInteg/java'
+        resources.srcDir 'src/testInteg/resources'
+    }
+}
+
+configurations {
+    integrationTestImplementation.extendsFrom testImplementation
+    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+task integrationTest(type: Test) {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.test.runtimeClasspath
+
+    outputs.upToDateWhen { false }
+    mustRunAfter test
+
+    useTestNG() {
+        suites 'src/testInteg/resources/testng.xml'
+    }
+    /*
+    testLogging {
+        showStandardStreams = true
+    }
+    */
+}
+
+check.dependsOn integrationTest

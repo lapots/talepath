@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Javers" verbose="1" parallel="methods" thread-count="3">
+    <test name="Javers Diff Test">
+        <classes>
+            <class name="com.lapots.breed.backend.JaversDiffIntegrationTest"/>
+        </classes>
+    </test>
+</suite>

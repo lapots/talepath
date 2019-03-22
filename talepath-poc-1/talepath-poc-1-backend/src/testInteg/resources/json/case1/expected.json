@@ -1,0 +1,13 @@
+{
+  "changes": [
+    {
+      "changeType": "ValueChange",
+      "globalId": {
+        "valueObject": "TestEntityPerson"
+      },
+      "property": "name",
+      "left": "Jack",
+      "right": "Michael"
+    }
+  ]
+}
