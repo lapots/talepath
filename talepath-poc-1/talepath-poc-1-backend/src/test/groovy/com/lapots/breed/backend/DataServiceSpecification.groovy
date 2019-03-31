@@ -3,6 +3,9 @@ package com.lapots.breed.backend
 import com.lapots.breed.backend.mock.MockDataService
 import spock.lang.Specification
 
+/**
+ * Original test rewrite using Spock Framework.
+ */
 class DataServiceSpecification extends Specification {
 
     def service
