@@ -3,6 +3,8 @@ package com.lapots.breed.backend;
 import static org.testng.AssertJUnit.assertNotNull;
 
 import com.google.gson.Gson;
+import com.lapots.breed.backend.util.FileResourceUtils;
+import com.lapots.breed.backend.util.GsonUtils;
 
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
