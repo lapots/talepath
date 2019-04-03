@@ -2,7 +2,6 @@ package com.lapots.breed.backend;
 
 import static org.testng.AssertJUnit.assertNotNull;
 
-import com.google.gson.Gson;
 import com.lapots.breed.backend.util.FileResourceUtils;
 import com.lapots.breed.backend.util.GsonUtils;
 
@@ -50,8 +49,6 @@ public class JaversDiffIntegrationTest {
 
     @DataProvider(name = "jsonDiff", parallel = true) // runs in a separate of test pool
     public Object[][] jsonDiffProvider() {
-        Gson gson = new Gson();
-
         List<Path> resourceFolder = FileResourceUtils.findResourceSubfolders("/json");
         Map<Path, List<Path>> testFiles = aggregateCaseFiles(resourceFolder);
 
