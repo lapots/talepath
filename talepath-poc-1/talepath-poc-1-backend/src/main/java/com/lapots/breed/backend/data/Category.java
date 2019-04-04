@@ -2,13 +2,8 @@ package com.lapots.breed.backend.data;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-
 public class Category implements Serializable {
-
-    @NotNull
     private int id;
-    @NotNull
     private String name;
 
     public int getId() {

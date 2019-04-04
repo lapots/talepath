@@ -1,4 +1,4 @@
-package com.lapots.breed.backend.util;
+package com.lapots.breed.backend.support.util;
 
 import org.json.JSONException;
 import org.skyscreamer.jsonassert.JSONAssert;

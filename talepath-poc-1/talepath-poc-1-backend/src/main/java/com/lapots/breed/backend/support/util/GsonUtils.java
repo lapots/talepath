@@ -1,4 +1,4 @@
-package com.lapots.breed.backend.util;
+package com.lapots.breed.backend.support.util;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;

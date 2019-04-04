@@ -1,0 +1,14 @@
+{
+  "changes": [
+    {
+      "changeType": "ValueChange",
+      "globalId": {
+        "entity": "ConfigurablePersonCharacter",
+        "cdoId": "p_id"
+      },
+      "property": "name",
+      "left": "Jack",
+      "right": "Michael"
+    }
+  ]
+}

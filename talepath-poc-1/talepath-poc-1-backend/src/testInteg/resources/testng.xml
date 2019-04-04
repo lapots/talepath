@@ -6,4 +6,10 @@
             <class name="com.lapots.breed.backend.JaversDiffIntegrationTest"/>
         </classes>
     </test>
+
+    <test name="Javers Mongo Test">
+        <classes>
+            <class name="com.lapots.breed.backend.JaversMongoIntegrationTest"/>
+        </classes>
+    </test>
 </suite>

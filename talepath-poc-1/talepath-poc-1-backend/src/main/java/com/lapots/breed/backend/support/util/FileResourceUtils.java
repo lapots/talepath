@@ -1,4 +1,4 @@
-package com.lapots.breed.backend.util;
+package com.lapots.breed.backend.support.util;
 
 import java.net.URI;
 import java.nio.file.Files;
