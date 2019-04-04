@@ -2,16 +2,15 @@ package com.lapots.breed.backend;
 
 import static org.testng.AssertJUnit.assertNotNull;
 
+import com.lapots.breed.backend.data.PersonCharacter;
 import com.lapots.breed.backend.util.FileResourceUtils;
 import com.lapots.breed.backend.util.GsonUtils;
 
+import com.lapots.breed.backend.util.JsonAssertWrapper;
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
 import org.javers.core.diff.Diff;
 import org.javers.core.diff.ListCompareAlgorithm;
-import org.javers.core.metamodel.annotation.TypeName;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -20,31 +19,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 /**
  * Sample test using TestNG.
  */
 @Test(dataProvider = "jsonDiff")
 public class JaversDiffIntegrationTest {
 
-    public void shouldCompareEntities(Person input1, Person input2, String expected) throws Exception {
+    public void shouldCompareEntities(PersonCharacter input1, PersonCharacter input2, String expected) {
         Javers javers = JaversBuilder.javers()
             .withListCompareAlgorithm(ListCompareAlgorithm.LEVENSHTEIN_DISTANCE)
             .build();
         Diff diff = javers.compare(input1, input2);
         String jsonDiff = javers.getJsonConverter().toJson(diff);
-
-        JSONAssert.assertEquals(expected, jsonDiff, JSONCompareMode.STRICT);
-    }
-
-    @TypeName("TestEntityPerson")
-    @Data
-    @AllArgsConstructor
-    private class Person {
-        private String id;
-        private String name;
+        JsonAssertWrapper.assertEquals(expected, jsonDiff);
     }
 
     @DataProvider(name = "jsonDiff", parallel = true) // runs in a separate of test pool
@@ -59,8 +46,8 @@ public class JaversDiffIntegrationTest {
             .map(entry -> {
                 List<Path> caseFiles = entry.getValue(); // sorted -> expected, input-1, input-2
                 String expectedJson = FileResourceUtils.pathResourceToString(caseFiles.get(0));
-                Person input1 = GsonUtils.toObject(caseFiles.get(1), Person.class);
-                Person input2 = GsonUtils.toObject(caseFiles.get(2), Person.class);
+                PersonCharacter input1 = GsonUtils.toObject(caseFiles.get(1), PersonCharacter.class);
+                PersonCharacter input2 = GsonUtils.toObject(caseFiles.get(2), PersonCharacter.class);
                 return new Object[] { input1, input2, expectedJson }; })
             .collect(Collectors.toList());
 

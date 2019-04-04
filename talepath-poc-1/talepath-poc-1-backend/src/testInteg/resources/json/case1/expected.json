@@ -3,7 +3,7 @@
     {
       "changeType": "ValueChange",
       "globalId": {
-        "valueObject": "TestEntityPerson"
+        "valueObject": "ConfigurablePersonCharacter"
       },
       "property": "name",
       "left": "Jack",

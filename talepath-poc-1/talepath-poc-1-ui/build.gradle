@@ -1,34 +1,11 @@
 plugins {
     id 'org.gretty' version '2.3.1'
-    id 'com.devsoap.vaadin-flow' version '1.0.0.RC8'
-}
-
-repositories {
-    vaadin.repositories()
-}
-
-vaadin {
-    version '10.0.11'
-}
-
-gretty {
-    contextPath = '/'
 }
 
 dependencies {
     implementation project(":talepath-poc-1-backend")
-
-    implementation vaadin.core()
-    implementation vaadin.bom()
-    implementation vaadin.servletApi()
-    implementation vaadin.slf4j()
-
+    
     implementation "org.hibernate:hibernate-validator:5.4.1.Final"
-
-    implementation "org.vaadin.pekka:checkbox-group-java:1.0.0.alpha1"
+    
     implementation "javax.validation:validation-api:2.0.1.Final"
-}
-
-vaadinAssembleClient {
-    webappDir 'src/main/webapp'
 }
