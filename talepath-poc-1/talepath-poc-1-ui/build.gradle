@@ -7,16 +7,25 @@ dependencies {
     implementation project(":talepath-poc-1-backend")
 
     implementation "io.vertx:vertx-web:3.7.0"
+
+    integrationTestImplementation "io.vertx:vertx-junit5:3.7.0"
+    integrationTestImplementation "io.vertx:vertx-web-client:3.7.0"
+    integrationTestImplementation "org.junit.jupiter:junit-jupiter-api:5.3.2"
+    integrationTestRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.3.2"
 }
+
+def mainVerticleName = 'com.lapots.breed.ui.SampleRestVerticle'
 
 application {
     mainClassName = "io.vertx.core.Launcher"
 }
 
-def mainVerticleName = 'com.lapots.breed.ui.SampleRestVerticle'
-
 run {
     args = ["run", mainVerticleName, "--launcher-class=${application.mainClassName}"]
+}
+
+integrationTest {
+    useJUnitPlatform()
 }
 
 shadowJar {
