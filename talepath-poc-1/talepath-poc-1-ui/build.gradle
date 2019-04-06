@@ -1,11 +1,30 @@
 plugins {
-    id 'org.gretty' version '2.3.1'
+    id "application"
+    id("com.github.johnrengelman.shadow") version "5.0.0"
 }
 
 dependencies {
     implementation project(":talepath-poc-1-backend")
-    
-    implementation "org.hibernate:hibernate-validator:5.4.1.Final"
-    
-    implementation "javax.validation:validation-api:2.0.1.Final"
+
+    implementation "io.vertx:vertx-web:3.7.0"
+}
+
+application {
+    mainClassName = "io.vertx.core.Launcher"
+}
+
+def mainVerticleName = 'com.lapots.breed.ui.SampleRestVerticle'
+
+run {
+    args = ["run", mainVerticleName, "--launcher-class=${application.mainClassName}"]
+}
+
+shadowJar {
+    classifier = "fat"
+    manifest {
+        attributes["Main-Verticle"] = mainVerticleName
+    }
+    mergeServiceFiles {
+        include("META-INF/services/io.vertx.core.spi.VerticleFactory")
+    }
 }
