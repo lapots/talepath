@@ -22,8 +22,7 @@ public class SampleRestVerticleTest {
 
     @BeforeEach
     void prepare(Vertx vertx, VertxTestContext testContext) {
-        vertx.deployVerticle(SampleRestVerticle.class.getCanonicalName(),
-            testContext.succeeding(id -> testContext.completeNow()));
+        vertx.deployVerticle(SampleRestVerticle.class.getCanonicalName(), testContext.completing());
     }
 
     @Test

@@ -14,7 +14,7 @@ integrationTest {
 
 mongo {
     port 10101
-    logging 'console'
+    // logging 'console'
 }
 
 dependencies {
