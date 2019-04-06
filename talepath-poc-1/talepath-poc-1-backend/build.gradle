@@ -4,43 +4,18 @@ plugins {
     id 'groovy'
 }
 
-sourceSets {
-    integrationTest {
-        java.srcDir 'src/testInteg/java'
-        resources.srcDir 'src/testInteg/resources'
-        compileClasspath += sourceSets.main.output + configurations.testCompile
-    }
-}
-
-configurations {
-    integrationTestImplementation.extendsFrom testImplementation
-    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
-}
-
-task integrationTest(type: Test) {
-    testClassesDirs = sourceSets.integrationTest.output.classesDirs
-    classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.test.runtimeClasspath
-
-    outputs.upToDateWhen { false }
-    mustRunAfter test
+integrationTest {
     runWithMongoDb = true
 
     useTestNG() {
         suites 'src/testInteg/resources/testng.xml'
     }
-    
-    /*testLogging {
-        showStandardStreams = true
-    }*/
-    
 }
 
 mongo {
     port 10101
     logging 'console'
 }
-
-check.dependsOn integrationTest
 
 dependencies {
     annotationProcessor "org.projectlombok:lombok:1.18.6"

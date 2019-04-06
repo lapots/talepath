@@ -6,9 +6,36 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-
+    
     version = '1.0-SNAPSHOT'
     repositories {
         jcenter()
     }
+
+    sourceSets {
+        integrationTest {
+            java.srcDir 'src/testInteg/java'
+            resources.srcDir 'src/testInteg/resources'
+            compileClasspath += sourceSets.main.output + configurations.testCompile
+        }
+    }
+
+    configurations {
+        integrationTestImplementation.extendsFrom testImplementation
+        integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+    }
+
+    task integrationTest(type: Test) {
+        testClassesDirs = sourceSets.integrationTest.output.classesDirs
+        classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.test.runtimeClasspath
+
+        outputs.upToDateWhen { false }
+        mustRunAfter test
+
+        /*testLogging {
+            showStandardStreams = true
+        }*/
+    }
+
+    check.dependsOn integrationTest
 }
