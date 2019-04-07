@@ -7,6 +7,8 @@ dependencies {
     implementation project(":talepath-poc-1-backend")
 
     implementation "io.vertx:vertx-web:3.7.0"
+    implementation "io.vertx:vertx-mongo-client:3.7.0"
+    implementation "io.vertx:vertx-core:3.7.0"
 
     integrationTestImplementation "io.vertx:vertx-junit5:3.7.0"
     integrationTestImplementation "io.vertx:vertx-web-client:3.7.0"

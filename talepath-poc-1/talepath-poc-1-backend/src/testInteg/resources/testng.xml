@@ -12,4 +12,10 @@
             <class name="com.lapots.breed.backend.JaversMongoIntegrationTest"/>
         </classes>
     </test>
+
+    <test name="Temporary Core Test">
+        <classes>
+            <class name="com.lapots.breed.backend.service.CharacterStorageServiceIntegrationTest"/>
+        </classes>
+    </test>
 </suite>

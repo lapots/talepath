@@ -22,6 +22,8 @@ dependencies {
     implementation "org.projectlombok:lombok:1.18.6"
     implementation "org.javers:javers-persistence-mongo:5.3.4"
     implementation "org.javers:javers-core:5.3.4"
+    implementation "io.vertx:vertx-mongo-client:3.7.0"
+    implementation "io.vertx:vertx-codegen:3.7.0"
 
     testImplementation "org.spockframework:spock-core:1.3-groovy-2.5"
     testImplementation "org.codehaus.groovy:groovy-all:2.5.6"

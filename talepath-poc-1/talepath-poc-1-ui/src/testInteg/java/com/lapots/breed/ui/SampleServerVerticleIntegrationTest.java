@@ -18,7 +18,7 @@ import io.vertx.junit5.VertxTestContext;
  * Simple integration test for server.
  */
 @ExtendWith(VertxExtension.class)
-public class SampleServerVerticleTest {
+public class SampleServerVerticleIntegrationTest {
 
     @BeforeEach
     void prepare(Vertx vertx, VertxTestContext testContext) {

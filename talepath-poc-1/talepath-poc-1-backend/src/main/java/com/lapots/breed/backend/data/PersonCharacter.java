@@ -1,5 +1,6 @@
 package com.lapots.breed.backend.data;
 
+import io.vertx.codegen.annotations.DataObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import org.javers.core.metamodel.annotation.TypeName;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@DataObject
 public class PersonCharacter {
     @Id
     private String id;

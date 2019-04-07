@@ -21,7 +21,7 @@ import io.vertx.junit5.VertxTestContext;
  * Sample test for REST.
  */
 @ExtendWith(VertxExtension.class)
-public class SampleRestVerticleTest {
+public class SampleRestVerticleIntegrationTest {
     private static final String ID = "p_id";
     private static final String NAME = "Jack";
     private static final int AGE = 20;
