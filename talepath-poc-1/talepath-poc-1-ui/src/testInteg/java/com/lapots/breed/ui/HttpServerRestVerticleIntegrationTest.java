@@ -13,7 +13,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import io.restassured.RestAssured;
+import io.vertx.config.ConfigRetriever;
+import io.vertx.config.ConfigRetrieverOptions;
+import io.vertx.config.ConfigStoreOptions;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
 
@@ -21,17 +25,30 @@ import io.vertx.junit5.VertxTestContext;
  * Sample test for REST.
  */
 @ExtendWith(VertxExtension.class)
-public class SampleRestVerticleIntegrationTest {
+public class HttpServerRestVerticleIntegrationTest {
     private static final String ID = "p_id";
     private static final String NAME = "Jack";
     private static final int AGE = 20;
+    private static final String HTTP_PORT_OPTION = "http.port";
 
     @BeforeAll
     static void configureRestAssured(Vertx vertx, VertxTestContext testContext) {
-        RestAssured.baseURI = "http://localhost";
-        RestAssured.port = Integer.getInteger("http.port", 8080);
-
-        vertx.deployVerticle(SampleRestVerticle.class.getCanonicalName(), testContext.completing());
+        ConfigStoreOptions resourceStore = new ConfigStoreOptions()
+            .setType("file")
+            .setConfig(new JsonObject().put("path", "conf/talepath-server.json"));
+        ConfigRetrieverOptions options = new ConfigRetrieverOptions()
+            .addStore(resourceStore);
+        ConfigRetriever retriever = ConfigRetriever.create(vertx, options);
+        retriever.getConfig(ar -> {
+            if (ar.failed()) {
+                testContext.failNow(new RuntimeException("Failed to retrieve configuration"));
+            } else {
+                JsonObject config = ar.result();
+                RestAssured.baseURI = "http://localhost";
+                RestAssured.port = config.getInteger(HTTP_PORT_OPTION);
+            }
+        });
+        vertx.deployVerticle(new HttpServerVerticle(), testContext.completing());
     }
 
     @Test
